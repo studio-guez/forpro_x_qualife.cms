@@ -1,5 +1,106 @@
 title: Site
 
-sections:
+tabs:
+  header:
+    label: Header
+    sections:
+      header_fields:
+        type: fields
+        fields:
+          header_title:
+            label: Titre header
+            type: text
+          image_left:
+            label: Image gauche
+            type: files
+            max: 1
+            required: true
+          image_right:
+            label: Image droite
+            type: files
+            max: 1
+            required: true
+
+  intro:
+    label: Intro
+    sections:
+      intro_fields:
+        type: fields
+        fields:
+          intro_text:
+            label: Intro
+            type: writer
+            marks:
+              - italic
+              - link
+            nodes:
+              - paragraph
+          kickoff_url:
+            label: Ressources atelier kick-off
+            type: url
+
+  information:
+    label: Information
+    sections:
+      information_fields:
+        type: fields
+        fields:
+          information_title:
+            label: Titre
+            type: text
+          information_blocks:
+            label: Information
+            type: blocks
+            fieldsets:
+              writer:
+                name: Texte
+                icon: text
+                fields:
+                  text:
+                    type: writer
+                    marks:
+                      - italic
+                      - link
+                    nodes:
+                      - paragraph
+              cta:
+                name: CTA
+                icon: url
+                fields:
+                  cta_url:
+                    label: URL
+                    type: url
+                  cta_title:
+                    label: Titre du bouton
+                    type: text
+
+  footer:
+    label: Footer
+    sections:
+      footer_fields:
+        type: fields
+        fields:
+          footer_title:
+            label: Titre
+            type: text
+          footer_blocks:
+            label: Footer
+            type: blocks
+            fieldsets:
+              writer:
+                name: Texte
+                icon: text
+                fields:
+                  text:
+                    type: writer
+                    marks:
+                      - italic
+                      - link
+                    nodes:
+                      - paragraph
+
   pages:
-    type: pages
+    label: Pages
+    sections:
+      pages:
+        type: pages
