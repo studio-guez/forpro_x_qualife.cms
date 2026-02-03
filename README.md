@@ -34,3 +34,42 @@ If you are familiar with Git, you can clone Kirby's Plainkit repository from Git
 
 © 2009 Bastian Allgeier
 [getkirby.com](https://getkirby.com) · [License agreement](https://getkirby.com/license)
+
+
+## fields
+
+### general
+
+section "header"
+- field text: titre header
+- field files: "image gauche", une seul image, required
+- field files: "image droite", une seul image, required
+
+section "intro"
+- field writer: juste paragraphe, italic et lien  
+- field url: URL pour lien "Ressources atelier kick-off", un seul lien   
+
+section "information"
+- filed text: titre
+- field bloc: information
+  - bloc writer: juste paragraphe, italic et lien
+  - bloc CTA:
+      - un champs text qui vérifie si c'est bien formaté comme un URL
+      - un champs text pour le titre du bouton
+
+section "footer"
+- field text: titre
+- field bloc:
+  - bloc writer: juste paragraphe, italic et lien
+
+
+## events
+
+field text: sous-titre 
+field text: thème
+field date: jour et heure
+field toggle: inscriptions ouvertes / complet
+field information:
+- bloc writer: juste paragraphe, italic et lien et emphase
+field url: lien vers la billetterie Infomaniak
+field file: dépot d'un fichier PDF
