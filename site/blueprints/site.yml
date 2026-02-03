@@ -53,6 +53,8 @@ tabs:
             type: blocks
             fieldsets:
               writer:
+                preview: fields
+                wysiwyg: true
                 name: Texte
                 icon: text
                 fields:
@@ -64,12 +66,14 @@ tabs:
                     nodes:
                       - paragraph
               cta:
+                preview: fields
+                wysiwyg: true
                 name: CTA
                 icon: url
                 fields:
                   cta_url:
-                    label: URL
-                    type: url
+                    label: Lien ou mail
+                    type: text
                   cta_title:
                     label: Titre du bouton
                     type: text
@@ -83,21 +87,15 @@ tabs:
           footer_title:
             label: Titre
             type: text
-          footer_blocks:
+          footer_content:
             label: Footer
-            type: blocks
-            fieldsets:
-              writer:
-                name: Texte
-                icon: text
-                fields:
-                  text:
-                    type: writer
-                    marks:
-                      - italic
-                      - link
-                    nodes:
-                      - paragraph
+            type: writer
+            marks:
+              - italic
+              - link
+              - email
+            nodes:
+              - paragraph
 
   pages:
     label: Pages

@@ -43,9 +43,7 @@ sections:
         width: 1/2
         label: Fichiers
         type: url
-#      pdf:
-#        label: Dépôt d'un fichier PDF
-#        type: files
-#        max: 1
-#        uploads:
-#          accept: application/pdf
+      pdf:
+        label: Dépôt d'un fichier
+        type: files
+        max: 1
