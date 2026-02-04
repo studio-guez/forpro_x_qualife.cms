@@ -2,6 +2,12 @@
 
 return [
   'debug' => true,
+  [
+    'pattern' => '/',
+    'action'  => function () {
+      go('/panel');
+    }
+  ],
   'api' => [
     'basicAuth' => false,        // ❌ désactive l'auth
     'allowInsecure' => true      // ✅ accepte HTTP
