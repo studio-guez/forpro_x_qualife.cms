@@ -2,11 +2,13 @@
 
 return [
   'debug' => true,
-  [
-    'pattern' => '/',
-    'action'  => function () {
-      go('/panel');
-    }
+  'routes' => [
+    [
+      'pattern' => '/',
+      'action'  => function () {
+        go('/panel');
+      }
+    ],
   ],
   'api' => [
     'basicAuth' => false,        // ❌ désactive l'auth
