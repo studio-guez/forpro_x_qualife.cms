@@ -1,5 +1,9 @@
 title: Default
 
+status:
+  draft: Draft
+  listed: Published
+
 sections:
   content:
     type: fields
