@@ -4,6 +4,8 @@ status:
   draft: Draft
   listed: Published
 
+num: '{{ page.datetime.toDate("Ymd") }}'
+
 sections:
   content:
     type: fields
