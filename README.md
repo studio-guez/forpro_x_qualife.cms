@@ -1,75 +1,44 @@
-<img src="http://getkirby.com/assets/images/github/plainkit.jpg" width="300">
+# Forpro x Qualife Backend - Kirby CMS
 
-**Kirby: the CMS that adapts to any project, loved by developers and editors alike.**
-The Plainkit is a minimal Kirby setup with the basics you need to start a project from scratch. It is the ideal choice if you are already familiar with Kirby and want to start step-by-step.
+A content management platform built with Kirby CMS (v5), running on PHP 8.3 with Apache in a Docker environment.
 
-You can learn more about Kirby at [getkirby.com](https://getkirby.com).
+## Local Development (docker-compose)
 
-### Try Kirby for free
+1. `git clone https://github.com/studio-guez/forpro_x_qualife.git`
+1. `cd forpro_x_qualife.cms/`
+1. _Vérifier config, surtout conflits ports dans_ `docker-compose.yml`
+1. Build and run with your user's UID/GID:
 
-You can try Kirby and the Plainkit on your local machine or on a test server as long as you need to make sure it is the right tool for your next project. … and when you’re convinced, [buy your license](https://getkirby.com/buy).
+```bash
+docker-compose up -d --build
+```
 
-### Get going
+5. Fix permissions for writable directories (first time only):
 
-Read our guide on [how to get started with Kirby](https://getkirby.com/docs/guide/quickstart).
+```bash
+docker exec forpro_x_qualifecms-app-1 chown -R www-data:www-data /var/www/html/site/sessions /var/www/html/site/accounts /var/www/html/media /var/www/html/content
+```
 
-You can [download the latest version](https://github.com/getkirby/plainkit/archive/main.zip) of the Plainkit.
-If you are familiar with Git, you can clone Kirby's Plainkit repository from Github.
+This mounts the entire project and runs Apache with your local user permissions (UID 1000), so you can edit files directly from VS Code or terminal without permission issues.
 
-    git clone https://github.com/getkirby/plainkit.git
+## Production (Dockerfile only)
 
-## What's Kirby?
+For production, use the standard `Dockerfile` which copies files and sets `www-data` ownership:
 
--   **[getkirby.com](https://getkirby.com)** – Get to know the CMS.
--   **[Try it](https://getkirby.com/try)** – Take a test ride with our online demo. Or download one of our kits to get started.
--   **[Documentation](https://getkirby.com/docs/guide)** – Read the official guide, reference and cookbook recipes.
--   **[Issues](https://github.com/getkirby/kirby/issues)** – Report bugs and other problems.
--   **[Feedback](https://feedback.getkirby.com)** – You have an idea for Kirby? Share it.
--   **[Forum](https://forum.getkirby.com)** – Whenever you get stuck, don't hesitate to reach out for questions and support.
--   **[Discord](https://chat.getkirby.com)** – Hang out and meet the community.
--   **[Mastodon](https://mastodon.social/@getkirby)** – Spread the word.
--   **[Bluesky](https://bsky.app/profile/getkirby.com)** – Spread the word.
+```bash
+docker build -t forpro-qualife-cms .
+docker run -d -p 80:80 forpro-qualife-cms
+```
 
----
+## Sync content from production
 
-© 2009 Bastian Allgeier
-[getkirby.com](https://getkirby.com) · [License agreement](https://getkirby.com/license)
+Pull the `content` folder from the remote server:
 
+```bash
+rsync -avz --delete n18gob_oplus@n18gob.ftp.infomaniak.com:/home/clients/a582a3f37b5cd510ead76826a1cfe200/sites/cms.rendezvousdesformateurs.ch/content/ ./content
+```
 
-## fields
+## Default access URLs (with default ports)
 
-### general
+- **Admin Panel**: http://localhost:8080
 
-section "header"
-- field text: titre header
-- field files: "image gauche", une seul image, required
-- field files: "image droite", une seul image, required
-
-section "intro"
-- field writer: juste paragraphe, italic et lien  
-- field url: URL pour lien "Ressources atelier kick-off", un seul lien   
-
-section "information"
-- filed text: titre
-- field bloc: information
-  - bloc writer: juste paragraphe, italic et lien
-  - bloc CTA:
-      - un champs text qui vérifie si c'est bien formaté comme un URL
-      - un champs text pour le titre du bouton
-
-section "footer"
-- field text: titre
-- field bloc:
-  - bloc writer: juste paragraphe, italic et lien
-
-
-## events
-
-field text: sous-titre 
-field text: thème
-field date: jour et heure
-field toggle: inscriptions ouvertes / complet
-field information:
-- bloc writer: juste paragraphe, italic et lien et emphase
-field url: lien vers la billetterie Infomaniak
-field file: dépot d'un fichier PDF

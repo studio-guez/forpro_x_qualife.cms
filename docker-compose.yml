@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    image: forpro-qualife-cms
+    container_name: cms-app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APACHE_RUN_USER=#${UID:-1000}
+      - APACHE_RUN_GROUP=#${GID:-1000}
+    networks:
+      - shared
+
+networks:
+  shared:
+    name: forpro_shared

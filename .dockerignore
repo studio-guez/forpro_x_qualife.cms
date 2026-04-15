@@ -1,0 +1,5 @@
+.git
+*.md
+site/cache/*
+site/sessions/*
+media/*
