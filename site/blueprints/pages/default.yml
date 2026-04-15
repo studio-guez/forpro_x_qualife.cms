@@ -45,11 +45,30 @@ sections:
         label: Lien vers la billetterie Infomaniak
         type: url
 
-      files:
+      resource_type_spacer:
+        type: gap
         width: 1/2
-        label: Fichiers
+
+      resource_type:
+        width: 1/2
+        label: Type de ressource
+        type: select
+        options:
+          link: Lien
+          file: Fichier
+        default: link
+
+      files:
+        label: Lien vers les ressources
+        width: 1/2
         type: url
+        when:
+          resource_type: link
+
       pdf:
-        label: Dépôt d'un fichier
+        label: Dépôt d'un fichier de ressources
+        width: 1/2
         type: files
         max: 1
+        when:
+          resource_type: file
