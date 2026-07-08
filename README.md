@@ -1,6 +1,6 @@
 # Forpro x Qualife Backend - Kirby CMS
 
-A content management platform built with Kirby CMS (v5), running on PHP 8.3 with Apache in a Docker environment.
+A content management platform built with Kirby CMS (v5), running on PHP 8.4 with Apache in a Docker environment.
 
 ## Local Development (docker-compose)
 
@@ -28,6 +28,22 @@ For production, use the standard `Dockerfile` which copies files and sets `www-d
 ```bash
 docker build -t forpro-qualife-cms .
 docker run -d -p 80:80 forpro-qualife-cms
+```
+
+## Updating dependencies (Composer)
+
+Composer is not installed in the app image. Use the official Composer Docker image against the project directory:
+
+```bash
+docker run --rm -v $(pwd):/app composer:latest update --ignore-platform-req=ext-gd
+```
+
+> `--ignore-platform-req=ext-gd` is required because the Composer image lacks the GD extension; it is present in the actual app image.
+
+To check for security advisories without updating:
+
+```bash
+docker run --rm -v $(pwd):/app composer:latest audit
 ```
 
 ## Sync content from production
