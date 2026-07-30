@@ -10,6 +10,11 @@ sections:
   content:
     type: fields
     fields:
+      description:
+        label: Description SEO
+        type: textarea
+        help: "Courte description pour les moteurs de recherche (max 160 caractères). Si vide, le champ information sera utilisé."
+        maxlength: 160
       location:
         label: Localisation
         type: text
