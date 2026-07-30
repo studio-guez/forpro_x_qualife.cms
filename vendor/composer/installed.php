@@ -65,9 +65,9 @@
             'dev_requirement' => false,
         ),
         'getkirby/cms' => array(
-            'pretty_version' => '5.5.1',
-            'version' => '5.5.1.0',
-            'reference' => 'ff015a9e2f4160b79e1d7d40ff365549a3d674ff',
+            'pretty_version' => '5.5.3',
+            'version' => '5.5.3.0',
+            'reference' => '46daf74851b8ad5438112f365d1dbaf74504ef88',
             'type' => 'kirby-cms',
             'install_path' => __DIR__ . '/../../kirby',
             'aliases' => array(),
