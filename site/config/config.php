@@ -1,11 +1,18 @@
 <?php
 
-$dotenv = is_file(__DIR__ . '/../../.env.php') ? require __DIR__ . '/../../.env.php' : [];
+$env = is_file(__DIR__ . '/../../.env.php')
+  ? require __DIR__ . '/../../.env.php'
+  : [];
 
-return array_merge($dotenv, [
-  'debug' => true,
+return [
+  'debug' => (bool)($env['DEBUG'] ?? false),
+  'content.salt' => $env['CONTENT_SALT'] ?? null,
+  'cookie.key'   => $env['COOKIE_KEY'] ?? null,
   'panel' => [
     'css' => 'assets/css/custom-panel.css',
+    'vue' => [
+      'compiler' => (bool)($env['PANEL_VUE_COMPILER'] ?? false),
+    ],
   ],
   'routes' => [
     [
@@ -25,4 +32,4 @@ return array_merge($dotenv, [
     //      return true;  // Autorise TOUT en mode dev
     //    }
   ],
-]);
+];

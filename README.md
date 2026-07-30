@@ -10,8 +10,9 @@ A content management platform built with Kirby CMS (v5), running on PHP 8.4 with
 
 ```bash
 cp .env.example.php .env.php
-# then edit .env.php and set content.salt and cookie.key
+# then edit .env.php and set CONTENT_SALT and COOKIE_KEY
 # generate values with: docker exec cms-app php -r "echo bin2hex(random_bytes(32));"
+# set DEBUG => true locally; it MUST stay false in production
 ```
 
 4. _Vérifier config, surtout conflits ports dans_ `docker-compose.yml`
