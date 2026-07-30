@@ -1,6 +1,8 @@
 <?php
 
-return [
+$dotenv = is_file(__DIR__ . '/../../.env.php') ? require __DIR__ . '/../../.env.php' : [];
+
+return array_merge($dotenv, [
   'debug' => true,
   'panel' => [
     'css' => 'assets/css/custom-panel.css',
@@ -19,8 +21,8 @@ return [
   ],
   'kql' => [
     'auth' => false,             // ✅ KQL sans login
-//    'intercept' => function ($type, $key, $value) {
-//      return true;  // Autorise TOUT en mode dev
-//    }
+    //    'intercept' => function ($type, $key, $value) {
+    //      return true;  // Autorise TOUT en mode dev
+    //    }
   ],
-];
+]);

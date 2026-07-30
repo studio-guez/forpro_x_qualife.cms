@@ -6,7 +6,15 @@ A content management platform built with Kirby CMS (v5), running on PHP 8.4 with
 
 1. `git clone https://github.com/studio-guez/forpro_x_qualife.git`
 1. `cd forpro_x_qualife.cms/`
-1. _Vérifier config, surtout conflits ports dans_ `docker-compose.yml`
+1. Copy and fill in the environment secrets:
+
+```bash
+cp .env.example.php .env.php
+# then edit .env.php and set content.salt and cookie.key
+# generate values with: docker exec cms-app php -r "echo bin2hex(random_bytes(32));"
+```
+
+4. _Vérifier config, surtout conflits ports dans_ `docker-compose.yml`
 1. Build and run with your user's UID/GID:
 
 ```bash
